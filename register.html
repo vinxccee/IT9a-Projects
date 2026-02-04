@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      max-width: 420px;
+      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      background: linear-gradient(90deg, #4a78d1, #6c5ce7, #74b9ff);
+      background-size: 300% 300%;
+      animation: gradient 5s ease infinite;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.5rem;
+      text-align: center;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      padding: 1rem 0;
+      letter-spacing: 1px;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 8px rgba(74, 120, 209, 0.5);
+      border-color: #4a78d1;
+    }
+
+    .btn-primary, .btn-secondary {
+      border-radius: 0.5rem;
+      padding: 0.6rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: rgba(74, 120, 209, 1);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(108, 117, 125, 1);
+    }
+
+    .form-text {
+      font-size: 0.85rem;
+      color: #555;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* Click animation */
+    .btn-clicked {
+      animation: clickAnim 0.4s forwards;
+    }
+
+    @keyframes clickAnim {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    Register
+  </div>
+  <div class="card-body p-4">
+    <form id="registerForm" action="login.html">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Full Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Username" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="Email" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" placeholder="Password" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" placeholder="Confirm Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mb-2" id="registerBtn">Register</button>
+      <a href="index.html" class="btn btn-secondary w-100">Back to Homepage</a>
+      <div class="form-text mt-3">
+        Already have an account? <a href="login.html">Login here</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('registerForm');
+  const btn = document.getElementById('registerBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent instant navigation
+    btn.classList.add('btn-clicked');
+
+    setTimeout(() => {
+      form.submit(); // submit after animation
+    }, 400); // matches animation duration
+  });
+</script>
+
+</body>
+</html>
